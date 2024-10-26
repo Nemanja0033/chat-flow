@@ -10,10 +10,21 @@ body{
 }
 
 .app-body{
+    display:grid;
+    grid-row: 1;
     width: 400px;
     height: 600px;
     border-radius: 20px;
     background-color: aliceblue;
     margin-top: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.185);
+}
+
+
+.app-header{
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    color: rgb(136, 124, 124);
+    border-bottom: solid 1px rgba(128, 128, 128, 0.26);
 }
