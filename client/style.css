@@ -4,7 +4,8 @@
 
 
 body{
-    background-color: #8edd6f;
+    background: rgb(113,177,88);
+    background: linear-gradient(77deg, rgba(113,177,88,1) 4%, rgba(142,221,111,1) 100%);
     display: flex;
     justify-content: center;
 }
@@ -23,8 +24,14 @@ body{
 
 .app-header{
     width: 100%;
-    height: 60px;
+    height: 75px;
     text-align: center;
     color: rgb(136, 124, 124);
     border-bottom: solid 1px rgba(128, 128, 128, 0.26);
+}
+
+.logo{
+    width: 90px;
+    height: 70px;
+    margin-top: 5px;
 }
