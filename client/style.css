@@ -43,11 +43,43 @@ body{
     cursor: pointer;
 }
 
-.messages-section{
+.messages-input{
     place-self: end;
     width: 100%;
     height: 75px;
     background-color: aliceblue;
     border-radius: 20px;
     border-top: solid 1px rgba(128, 128, 128, 0.26);
+}
+
+.input-section{
+    gap: 4px;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    border-radius: 20px;
+    border: 1px solid rgba(128, 128, 128, 0.315);
+    height: 35px;
+    width: 280px;
+    background-color: white;
+}
+
+button{
+    border-radius: 20px;
+    height: 35px;
+    width: 70px;
+    background-color: rgb(113,177,88);
+    color: white;
+    border: solid 1px rgba(128, 128, 128, 0.315);
+}
+
+button:hover{
+    background-color: aliceblue;
+    color:  rgb(113,177,88);
+    cursor: pointer;
 }
