@@ -9,16 +9,16 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "http://localhost:5173",
         methods: ["GET", "POST"],
     }
 });
 
 io.on("connection", (Socket) => {
-    console.log(Socket.id);
+    console.log(`User Connected: ${Socket.id}`);
 
     Socket.on("disconnect", () => {
-        console.log("User Disconnected", Socket.id)
+        console.log(`User Disconnected: ${Socket.id}`)
     });
 });
 
