@@ -7,6 +7,7 @@ const ChatBody = ({socket, username, room}) => {
 
   const [currentMessage, setCurrentMessage] = useState("")
   const [messageList, setMessageList] = useState([]);
+  const [chatInfo, setChatInfo] = useState([]);
 
   const sendMessage = async () => {
     if(currentMessage !== ''){
@@ -18,6 +19,7 @@ const ChatBody = ({socket, username, room}) => {
       }
 
       await socket.emit("send_message", messageData);
+      setMessageList((list) => [...list, messageData]);
     }
   }
 
@@ -27,6 +29,12 @@ const ChatBody = ({socket, username, room}) => {
     })
   }, [socket]);
 
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      setChatInfo((list) => [...list, data]);
+    })
+  }, [socket])
+
   return (
     <div>
        <div className='app-body'>
@@ -34,18 +42,16 @@ const ChatBody = ({socket, username, room}) => {
           <img  className='logo' src="https://i.postimg.cc/NFS4V2rK/logo.png" alt="logo" />
         </div>
 
-        {messageList.map((user) => {
-              return <div className='user-info'>
-                <p>{user.user} room: {user.room}</p>
-              </div>
-            })}
 
         <div className='messages-section'>
           {messageList.map((msg) => {
-            return <div className='message-bar'>
+            return <><div className='message-bar' id={username === msg.user ? 'you' : 'other'}>
               <h2 className='message'>{msg.message}</h2>
-              <p className='msg-date'>{msg.time}</p>
             </div>
+             <div className='msg-info'>
+             <p  style={{marginRight: '5px', fontWeight: 'lighter'}}>{msg.time}</p>
+             <p  style={{fontWeight: 'bolder'}}>{msg.user}</p>
+             </div></>
           })}  
         </div>
 
