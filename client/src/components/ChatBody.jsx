@@ -6,6 +6,7 @@ import {SendHorizontal } from 'lucide-react'
 const ChatBody = ({socket, username, room}) => {
 
   const [currentMessage, setCurrentMessage] = useState("")
+  const [messageList, setMessageList] = useState([]);
 
   const sendMessage = async () => {
     if(currentMessage !== ''){
@@ -22,7 +23,7 @@ const ChatBody = ({socket, username, room}) => {
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      console.log(data);
+      setMessageList((list) => [...list, data]);
     })
   }, [socket]);
 
@@ -33,8 +34,19 @@ const ChatBody = ({socket, username, room}) => {
           <img  className='logo' src="https://i.postimg.cc/NFS4V2rK/logo.png" alt="logo" />
         </div>
 
-        <div className='messages-section'>
+        {messageList.map((user) => {
+              return <div className='user-info'>
+                <p>{user.user} room: {user.room}</p>
+              </div>
+            })}
 
+        <div className='messages-section'>
+          {messageList.map((msg) => {
+            return <div className='message-bar'>
+              <h2 className='message'>{msg.message}</h2>
+              <p className='msg-date'>{msg.time}</p>
+            </div>
+          })}  
         </div>
 
         <div className='messages-input'>
