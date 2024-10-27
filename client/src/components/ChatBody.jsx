@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css';
 import {SendHorizontal } from 'lucide-react'
 
 
-const AppBody = () => {
+const ChatBody = ({socket, uername, room}) => {
 
   return (
     <div>
@@ -27,4 +27,4 @@ const AppBody = () => {
   )
 }
 
-export default AppBody
+export default ChatBody

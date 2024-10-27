@@ -60,12 +60,13 @@ body{
     align-items: center;
 }
 
-input{
+    input{
     border-radius: 20px;
     border: 1px solid rgba(128, 128, 128, 0.315);
     height: 35px;
     width: 280px;
     background-color: white;
+    margin-bottom: 20px;
 }
 
 button{

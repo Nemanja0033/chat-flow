@@ -1,15 +1,37 @@
-import Authentication from "./auth/Authentication";
-import AppBody from "./components/AppBody";
 import { io } from 'socket.io-client'; 
+import { useState } from 'react';
+import './auth/auth.css'
+import './components/style.css'
+import ChatBody from './components/ChatBody';
 
 const socket = io.connect('http://localhost:3001'); 
 
 export const App = () => {
+  const [username, setUsername] = useState("");
+  const [ room, setRoom ] = useState("");
+
+  const joinRoom = () => {
+    if (username !== "" && room !== "") {
+        socket.emit('join_room', (room));
+    }
+};
+
+
   return (
     <>
-      <Authentication />
-    </>
-  );
+    <div className='auth-body'>
+        <img  className='logo' src="https://i.postimg.cc/NFS4V2rK/logo.png" alt="logo" />
+        <div className='auth-inputs'>
+            <h3>Sing Up</h3>
+            <input type="text" name='name' placeholder='Enter name. . . ' onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" name='name' placeholder='Enter Room ID. . .' onChange={(e) => setRoom(e.target.value)} />
+            <button onClick={joinRoom}>Log In  </button>
+        </div>
+    </div>
+    <ChatBody socket={socket} username={username} room={room} />
+ </>
+    
+  )
 };
 
 export default App;
