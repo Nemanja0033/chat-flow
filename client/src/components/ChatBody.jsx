@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import './style.css';
 import {SendHorizontal } from 'lucide-react'
 
-
 const ChatBody = ({socket, username, room}) => {
 
   const [currentMessage, setCurrentMessage] = useState("")
   const [messageList, setMessageList] = useState([]);
-  const [chatInfo, setChatInfo] = useState([]);
 
   const sendMessage = async () => {
     if(currentMessage !== ''){
@@ -20,6 +18,7 @@ const ChatBody = ({socket, username, room}) => {
 
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
+      setCurrentMessage('');
     }
   }
 
@@ -29,11 +28,6 @@ const ChatBody = ({socket, username, room}) => {
     })
   }, [socket]);
 
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setChatInfo((list) => [...list, data]);
-    })
-  }, [socket])
 
   return (
     <div>
@@ -57,7 +51,7 @@ const ChatBody = ({socket, username, room}) => {
 
         <div className='messages-input'>
           <div className='input-section'>
-            <input  onKeyDown={(e) => { if(e.key === "Enter") sendMessage()}} type="text" placeholder='Type. . .' onChange={(e) => setCurrentMessage(e.target.value)} />
+            <input value={currentMessage}  onKeyDown={(e) => { if(e.key === "Enter") sendMessage()}} type="text" placeholder='Type. . .' onChange={(e) => setCurrentMessage(e.target.value)} />
             <button onClick={sendMessage}><SendHorizontal /></button>
           </div>
         </div>

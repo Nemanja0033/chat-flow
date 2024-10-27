@@ -16,6 +16,9 @@ export const App = () => {
         socket.emit('join_room', (room));
         setIsJoined(true);
     }
+    else{
+      alert("Please log in!")
+    }
 };
 
 
