@@ -3,7 +3,22 @@ import './style.css';
 import {SendHorizontal } from 'lucide-react'
 
 
-const ChatBody = ({socket, uername, room}) => {
+const ChatBody = ({socket, username, room}) => {
+
+  const [currentMessage, setCurrentMessage] = useState("")
+
+  const sendMessage = async () => {
+    if(currentMessage !== ''){
+      const messageData = {
+        room: room,
+        user: username,
+        message: currentMessage,
+        time: new Date().getHours + ':' + new Date().getMinutes,
+      }
+
+      await socket.emit("send_message", messageData);
+    }
+  }
 
   return (
     <div>
@@ -18,8 +33,8 @@ const ChatBody = ({socket, uername, room}) => {
 
         <div className='messages-input'>
           <div className='input-section'>
-            <input type="text" placeholder='Type. . .' />
-            <button><SendHorizontal /></button>
+            <input type="text" placeholder='Type. . .' onChange={(e) => setCurrentMessage(e.target.value)} />
+            <button onClick={sendMessage}><SendHorizontal /></button>
           </div>
         </div>
       </div>

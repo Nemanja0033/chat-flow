@@ -22,6 +22,10 @@ io.on("connection", (Socket) => {
         console.log(`User with ID: ${Socket.id} joined a room ID: ${data}`);
     })
 
+    Socket.on("send_message", (data) => {
+        console.log(data);
+    })
+
     Socket.on("disconnect", () => {
         console.log(`User Disconnected: ${Socket.id}`)
     });
