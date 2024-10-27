@@ -35,17 +35,21 @@ body{
     border-radius: 20px;
 }
 
-.messages-section{
+.messages-section {
     place-content: start;
     width: 100%;
     height: 400px;
     place-self: center;
+    overflow-y: auto; 
+    padding: 10px;
+    box-sizing: border-box; 
 }
 
 .message-bar {
     background-color: rgba(113, 177, 88, 0.507);
     border-radius: 20px;
     margin-left: 10px;
+    margin-right: 10px;
     padding: 10px; 
     max-width: 90%; 
     display: inline-block; 
@@ -59,11 +63,23 @@ body{
 
 
 #you{
-    background-color: rgba(113, 177, 88, 0.445);
+    background-color: rgba(113, 177, 88, 0.219);
+    display: flex;
+    justify-self: start;
 }
 
 #other{
-    background-color: rgba(128, 128, 128, 0.377);
+    background-color: rgba(128, 128, 128, 0.219);
+    display: flex;
+    justify-self: end;
+}
+
+#youInfo{
+    justify-self: start;
+}
+
+#otherInfo{
+    justify-self: end;
 }
 
 .msg-info{
@@ -75,6 +91,7 @@ body{
     position: relative;
     bottom: 25px;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 .logo{

@@ -48,7 +48,7 @@ const ChatBody = ({socket, username, room}) => {
             return <><div className='message-bar' id={username === msg.user ? 'you' : 'other'}>
               <h2 className='message'>{msg.message}</h2>
             </div>
-             <div className='msg-info'>
+             <div className='msg-info' id={username === msg.user ? 'youInfo' : 'otherInfo'}>
              <p  style={{marginRight: '5px', fontWeight: 'lighter'}}>{msg.time}</p>
              <p  style={{fontWeight: 'bolder'}}>{msg.user}</p>
              </div></>
@@ -57,7 +57,7 @@ const ChatBody = ({socket, username, room}) => {
 
         <div className='messages-input'>
           <div className='input-section'>
-            <input type="text" placeholder='Type. . .' onChange={(e) => setCurrentMessage(e.target.value)} />
+            <input  onKeyDown={(e) => { if(e.key === "Enter") sendMessage()}} type="text" placeholder='Type. . .' onChange={(e) => setCurrentMessage(e.target.value)} />
             <button onClick={sendMessage}><SendHorizontal /></button>
           </div>
         </div>
