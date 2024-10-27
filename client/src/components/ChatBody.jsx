@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css';
 import {SendHorizontal } from 'lucide-react'
 
@@ -13,12 +13,18 @@ const ChatBody = ({socket, username, room}) => {
         room: room,
         user: username,
         message: currentMessage,
-        time: new Date().getHours + ':' + new Date().getMinutes,
+        time: new Date().getHours() + ':' + new Date().getMinutes(),
       }
 
       await socket.emit("send_message", messageData);
     }
   }
+
+  useEffect(() => {
+    socket.on("receive_message", (data) => {
+      console.log(data);
+    })
+  }, [socket]);
 
   return (
     <div>

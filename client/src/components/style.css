@@ -18,6 +18,9 @@ body{
     background-color: rgba(240, 248, 255, 0.767);
     margin-top: 10px;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.185);
+    animation-name: appBody;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
 }
 
 
@@ -82,4 +85,17 @@ button:hover{
     background-color: aliceblue;
     color:  rgb(113,177,88);
     cursor: pointer;
+}
+
+@keyframes appBody {
+    0%{
+        position: relative;
+        top: 100px;
+        opacity: 0;
+    }
+    100%{
+        position: relative;
+        top: 0px;
+        opacity: 0.9;
+    }
 }
