@@ -57,7 +57,7 @@ const ChatBody = ({ socket, username, room }) => {
           <img className='logo' src="https://i.postimg.cc/NFS4V2rK/logo.png" alt="logo" />
         </div>
 
-        <div className={room === private_room ? 'private-room' : 'message-section'}>
+        <div className={room === private_room ? 'private-room' : 'messages-section'}>
           {messageList.map((msg, index) => (
             <React.Fragment key={index}>
               <div className='message-bar' id={username === msg.user ? 'you' : 'other'}>
