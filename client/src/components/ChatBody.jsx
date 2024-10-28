@@ -44,7 +44,7 @@ const ChatBody = ({socket, username, room}) => {
             </div>
              <div className='msg-info' id={username === msg.user ? 'youInfo' : 'otherInfo'}>
              <p  style={{marginRight: '5px', fontWeight: 'lighter'}}>{msg.time}</p>
-             <p  style={{fontWeight: 'bolder'}}>{msg.user === username ? 'You' : username}</p>
+             <p  style={{fontWeight: 'bolder'}}>{msg.user === username ? 'You' : msg.user}</p>
              </div></>
           })}  
         </div>
