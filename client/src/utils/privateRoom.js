@@ -1,0 +1,1 @@
+export const PRIVATE_ROOM = import.meta.env.VITE_PRIVATE_ROOM;
