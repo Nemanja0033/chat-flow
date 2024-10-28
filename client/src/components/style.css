@@ -182,13 +182,25 @@ button:hover{
 }
 
 @media screen and (max-width: 768px) {
+
+    body{
+        margin: 0px;
+    }
+
     .app-body{
+        margin: 0px;
         height: 100vh;
     }
     .messages-section{
-        height: 100%;
+        height: 84vh;
+        place-content: start;
+        width: 100%;
+        place-self: start;
+        overflow-y: auto; 
+        padding: 10px;
+        box-sizing: border-box; 
     }
     .private-room{
-        height: 100%;
+        height: 84vh;
     }
 }
