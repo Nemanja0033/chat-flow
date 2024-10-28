@@ -4,7 +4,7 @@
 
 
 body{
-    background: rgb(206, 216, 202);
+    background-color: rgba(190, 218, 154, 0.712);
     display: flex;
     justify-content: center;
 }
@@ -17,7 +17,7 @@ body{
     border-radius: 20px;
     background-color: rgba(240, 248, 255, 0.767);
     margin-top: 10px;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.185);
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.185);
     animation-name: appBody;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -38,7 +38,7 @@ body{
 .messages-section {
     place-content: start;
     width: 100%;
-    height: 400px;
+    height: 444px;
     place-self: center;
     overflow-y: auto; 
     padding: 10px;
@@ -65,21 +65,21 @@ body{
 #you{
     background-color: rgba(113, 177, 88, 0.219);
     display: flex;
-    justify-self: start;
+    justify-self: end;
 }
 
 #other{
     background-color: rgba(128, 128, 128, 0.219);
     display: flex;
-    justify-self: end;
-}
-
-#youInfo{
     justify-self: start;
 }
 
-#otherInfo{
+#youInfo{
     justify-self: end;
+}
+
+#otherInfo{
+    justify-self: start;
 }
 
 .msg-info{
