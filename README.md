@@ -6,6 +6,7 @@
 
 - **Room Selection**: Users can select and join specific chat rooms.
 - **Real-time Messaging**: Users can send and receive messages in real-time.
+- **Responsive UI UX**: Modern flat design UI
 
 ## Technologies
 
