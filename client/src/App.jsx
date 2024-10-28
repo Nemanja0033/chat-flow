@@ -4,7 +4,7 @@ import './auth/auth.css'
 import './components/style.css'
 import ChatBody from './components/ChatBody';
 
-const socket = io.connect('http://localhost:3001'); 
+const socket = io.connect('https://chatflow-mls4.onrender.com/'); 
 
 export const App = () => {
   const [username, setUsername] = useState("");
