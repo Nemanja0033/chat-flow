@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -9,10 +10,6 @@ const PORT = process.env.PORT || 3001;
 const ORIGIN = process.env.ORIGIN || "http://localhost:5173";
 
 app.use(cors());
-
-app.get('/', (req, res) => {
-    res.send('Server is up and running!');
-});
 
 const server = http.createServer(app);
 const io = new Server(server, {
