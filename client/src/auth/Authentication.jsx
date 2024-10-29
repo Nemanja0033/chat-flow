@@ -11,6 +11,7 @@ const Authentication = () => {
   const joinRoom = () => {
     if(username !== "" && room !== ""){
         Socket.emit("join_room", room);
+        localStorage.setItem('loggedRoom', room);
     }
   }
 

@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client'; 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './auth/auth.css'
 import './components/style.css'
 import ChatBody from './components/ChatBody';
@@ -16,12 +16,25 @@ export const App = () => {
   const joinRoom = () => {
     if (username !== "" && room !== "") {
         socket.emit('join_room', (room));
+        localStorage.setItem('loggedRoom', room);
+        localStorage.setItem('loggedUsername', username);
         setIsJoined(true);
     }
     else{
       alert("Please log in!")
     }
 };
+
+  useEffect(() => {
+    const savedRoom = localStorage.getItem('loggedRoom');
+    const savedUsername = localStorage.getItem('loggedUsername');
+    if(savedRoom && savedUsername) {
+      setUsername(savedUsername);
+      setRoom(savedRoom);
+      socket.emit("join_room", savedRoom);
+      setIsJoined(true);
+    }
+  }, [])
 
 
   return (
