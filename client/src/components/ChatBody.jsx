@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './style.css';
-import { SendHorizontal } from 'lucide-react';
+import { SendHorizontal, Settings } from 'lucide-react';
 import { PRIVATE_ROOM } from '../utils/privateRoom';
+import LogOut from '../helpers/LogOut';
+import ThemeToggler from '../helpers/ThemeToggler';
+import ClearMessages from '../helpers/ClearMessages';
 
 const ChatBody = ({ socket, username, room }) => {
   const [currentMessage, setCurrentMessage] = useState('');
   const [messageList, setMessageList] = useState([]);
+  const [isNavOpen, setIsNavOpen] = useState(true);
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
@@ -48,6 +52,15 @@ const ChatBody = ({ socket, username, room }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messageList]);
 
+
+  const showNav = () => {
+    setIsNavOpen(false);
+  }
+  
+  const closeNav = () => {
+    setIsNavOpen(true)
+  }
+
  const private_room = PRIVATE_ROOM;
 
   return (
@@ -56,6 +69,21 @@ const ChatBody = ({ socket, username, room }) => {
         <div className='header-section'>
           <img className='logo' src="https://i.postimg.cc/NFS4V2rK/logo.png" alt="logo" />
         </div>
+
+        {isNavOpen ? (
+          <div className='closed-nav'><div className='settings-icon'><Settings onClick={showNav} /></div></div>
+        )
+        :
+        (
+          <div className='navigation'>
+            <div className='nav-icons'>
+            <LogOut />
+            <ThemeToggler />
+            <ClearMessages room={room} />
+            </div>
+            <div className='close-nav'><Settings onClick={closeNav} /></div>
+          </div>
+        )}
 
         <div className={room === private_room ? 'private-room' : 'messages-section'}>
           {messageList.map((msg, index) => (

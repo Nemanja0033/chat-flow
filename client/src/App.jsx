@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client'; 
 import { useEffect, useState } from 'react';
-import './auth/auth.css'
+import './auth.css'
 import './components/style.css'
 import ChatBody from './components/ChatBody';
 
@@ -33,6 +33,13 @@ export const App = () => {
       setRoom(savedRoom);
       socket.emit("join_room", savedRoom);
       setIsJoined(true);
+    }
+  }, [])
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
     }
   }, [])
 
