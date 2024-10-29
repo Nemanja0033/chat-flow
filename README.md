@@ -6,6 +6,9 @@
 
 - **Room Selection**: Users can select and join specific chat rooms.
 - **Real-time Messaging**: Users can send and receive messages in real-time.
+- **Sing Out**: Users can sing out but keep all messsages.
+- **Theme**: Users can pick between light and nice lookin dark theme.
+- **Chat Clear**: Users can clear the chat.
 - **Responsive UI UX**: Modern flat design UI
 
 ## Technologies
