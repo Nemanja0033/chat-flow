@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './style.css';
+import '../style.css';
 import { SendHorizontal, Settings } from 'lucide-react';
 import { PRIVATE_ROOM } from '../utils/privateRoom';
 import LogOut from '../helpers/LogOut';

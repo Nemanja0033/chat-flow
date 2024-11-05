@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client'; 
 import { useEffect, useState } from 'react';
-import './auth.css'
-import './components/style.css'
+import './auth.css';
+import './style.css';
 import ChatBody from './components/ChatBody';
 
 const socket = io("https://chatflow-mls4.onrender.com", {

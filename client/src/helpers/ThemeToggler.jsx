@@ -8,8 +8,10 @@ const changeTheme = () => {
 
     if (appBody.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
+        document.body.style.backgroundColor = '#2e2e2e';
     } else {
         localStorage.setItem('theme', 'light');
+        document.body.style.backgroundColor = 'white';
     }
 };
 

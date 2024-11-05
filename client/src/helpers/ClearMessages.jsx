@@ -8,8 +8,8 @@ const ClearMessages = ({room}) => {
         let msg = confirm(`All messages from ${room} room will be penamently deleted!`);
         if(msg) {
             localStorage.removeItem(`messages_${room}`);
-            location.reload;
         }
+        location.reload();
     }
 
   return (
