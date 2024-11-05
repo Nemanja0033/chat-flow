@@ -1,6 +1,6 @@
 # ChatFlow
 
-**ChatFlow** is a real-time chat application built with **React**, **socket.io**, and **Node.js**. The frontend is deployed using **Vercel**, while the backend is deployed using 
+**ChatFlow** is a real-time chat application built with **React**, **socket.io**, and **Node.js**. 
 
 ## Features
 
