@@ -1,46 +1,44 @@
-import express from "express";
-import cors from "cors";
-import fs from "fs";
-
+require('dotenv').config();
+const express = require('express');
 const app = express();
+const http = require('http');
+const cors = require('cors');
+const { Server } = require("socket.io");
+
+const PORT = process.env.PORT || 4000;
+const ORIGIN = process.env.ORIGIN || "http://localhost:5173";
 
 app.use(cors());
 
-app.get('/calendar', (req, res) => {
-    fs.readFile('calendar.json', "utf8", (err, data) => {
-        if(err){
-            return res.status(500).json({ error: 'Problem pri citanju fajla!'});
-        }
-        res.json(JSON.parse(data));
-    })
+app.get('/', (req, res) => {
+    res.send('Server is up and running!');
 });
 
-app.get('/quotes', (req, res) => {
-    fs.readFile('quotes.json', 'utf8', (err, data) => {
-        if(err){
-            return res.status(500).json( { error: 'Problem pri citanju fajla!'});
-        }
-        res.json(JSON.parse(data));
-    })
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: ORIGIN,
+        methods: ["GET", "POST"],
+    }
 });
 
-app.get('/fasts', (req, res) => {
-    fs.readFile('postovi.json', 'utf8', (err, data) => {
-        if(err){
-            console.log(err);
-        }
-        res.json(JSON.parse(data));
-    })
+io.on("connection", (Socket) => {
+    console.log(`User Connected: ${Socket.id}`);
+
+    Socket.on("join_room", (data) => {
+        Socket.join(data);
+        console.log(`User with ID: ${Socket.id} joined a room ID: ${data}`);
+    });
+
+    Socket.on("send_message", (data) => {
+        Socket.to(data.room).emit("receive_message", data);
+    });
+
+    Socket.on("disconnect", () => {
+        console.log(`User Disconnected: ${Socket.id}`);
+    });
 });
 
-app.get('/about', (req, res) => {
-    fs.readFile('about.json', 'utf8', (err, data) => {
-        if(err){
-            console.log(err);
-        }
-        res.json(JSON.parse(data));
-    })
+server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}!`);
 });
-const PORT = 3000;
-
-app.listen(PORT, () => console.log(`Server je pokrenut na http://localhost:${PORT}`));
