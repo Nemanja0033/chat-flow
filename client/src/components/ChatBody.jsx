@@ -44,6 +44,7 @@ const ChatBody = ({ socket, username, room }) => {
         const updatedList = [...list, data];
         localStorage.setItem(`messages_${room}`, JSON.stringify(updatedList));
         return updatedList;
+        alert('New Message!');
       });
     });
   }, [socket, room]);

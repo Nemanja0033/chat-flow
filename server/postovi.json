@@ -1,0 +1,12 @@
+{
+    "uvod": [
+        {"naslov": "O postu", "tekst": "U pravoslavnom hrišćanstvu, post predstavlja duhovnu praksu koja ima duboko ukorjenjeno mjesto u životu vjernika."}
+    ],
+
+    "postovi": [
+        {"post": "Veliki (Vaskrsnji) post - 3. mart - 19. april"},
+        {"post": "Post Svetih Apostola - 16. jun - 11. jul"},
+        {"post": "Gospojinski Post - 14. - 27. avgust"},
+        {"post": "Bozicni post - 28. novembar - 6. januar"}
+    ]
+}
